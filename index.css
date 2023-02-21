@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #f2f2f2;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.bg-panel{
+    display:flex;
+    height:600px;
+    width:100%;
+    background-color: #75BC97;
+    margin: 0 auto;
+}
+
+.bg-left-leaves, .bg-center, .bg-right-leaves{
+    flex:1;
+}
+
+.bg-center img{
+    height:428px;
+    width:100%;
+}
+
+.bg-left-leaves{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:flex-start;
+    background-image:url('./images/hero/desktop/left-leaves.png');
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: bottom 0px right -30px;
+    padding:10%;
+    
+}
+
+.bg-left-leaves img{
+    width:100%;
+    height:20px;
+}
+
+.bg-left-leaves .arrow{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    height:45px;
+}
+
+
+
+.bg-left-leaves h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size:40px;
+    color:#fff;
+    
+}
+
+.bg-right-leaves{
+    background-image:url('./images/hero/desktop/right-leaves.png');
+    background-size:cover;
+}
