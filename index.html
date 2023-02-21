@@ -9,6 +9,9 @@
 	  <meta name="keywords" content="sites, web, desenvolvimento, plantas">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="./index.css"/>
+    <script src="./plants.json"></script>
+  
+
   </head>
 
   <body>
@@ -32,37 +35,40 @@
       </div>
     </div>
     
-    <form>
-      <label for="sunlight">Luminosidade:</label>
-      <select id="sunlight">
-        <option value="">Todos</option>
-        <option value="no">Sem luz direta</option>
-        <option value="low">Pouca luz</option>
-        <option value="high">Muita luz</option>
-      </select>
-
-      <label for="water">Rega:</label>
-      <select id="water">
-        <option value="">Todas</option>
-        <option value="regularly">Regularmente</option>
-        <option value="daily">Diariamente</option>
-        <option value="rarely">Raramente</option>
-      </select>
-
-      <label for="pets">Animais de estimação:</label>
-      <select id="pets">
-        <option value="">Todas</option>
-        <option value="true">Seguras para animais</option>
-        <option value="false">Tóxicas para animais</option>
-      </select>
-      
-      <button type="submit">Filtrar</button>
+    <form id="filterForm">
+      <div class="filter-group">
+        <label for="filterSun">Sol:</label>
+        <select id="filterSun">
+          <option value="all" selected>Todos</option>
+          <option value="no">Nenhum</option>
+          <option value="low">Baixo</option>
+          <option value="high">Alto</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filterWater">Água:</label>
+        <select id="filterWater">
+          <option value="all" selected>Todos</option>
+          <option value="rarely">Raramente</option>
+          <option value="regularly">Regularmente</option>
+          <option value="daily">Diariamente</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filterPets">Pet:</label>
+        <select id="filterPets">
+          <option value="all" selected>Todos</option>
+          <option value="true">Não Tóxica</option>
+          <option value="false">Tóxica</option>
+        </select>
+      </div>
+      <button type="submit" id="filterBtn">Filtrar</button>
     </form>
-
-    <ul id="plant-list"></ul>
-
-    <script src="./app.js"></script>
-
+  </header>
+  <main>
+    <div id="plantList"></div>
+  </main>
+  <script src="app.js"></script>
     </div>
    
   </body>

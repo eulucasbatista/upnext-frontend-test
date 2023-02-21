@@ -1,73 +1,66 @@
 import plants from './plants.json'
 
-const plantList = document.getElementById("plantList");
-const sunFilter = document.getElementById("sunFilter");
-const waterFilter = document.getElementById("waterFilter");
-const petsFilter = document.getElementById("petsFilter");
+// selecionando os elementos HTML
+const filterSun = document.querySelector('#filterSun');
+const filterWater = document.querySelector('#filterWater');
+const filterPets = document.querySelector('#filterPets');
+const plantList = document.querySelector('#plantList');
+const filterForm = document.querySelector('#filterForm');
 
+// carregando as plantas do arquivo JSON
 let plants = [];
-
-fetch("plants.json")
-  .then((response) => response.json())
-  .then((data) => {
+fetch('./plants.json')
+  .then(response => response.json())
+  .then(data => {
     plants = data;
     displayPlants(plants);
-  })
-  .catch((error) => {
-    console.log(error);
   });
 
+// função para exibir as plantas na tela
 function displayPlants(plants) {
-  const htmlString = plants
-    .map((plant) => {
-      return `
-      <li class="plant-item">
-        <div class="plant-image">
-          <img src="${plant.url}" alt="${plant.name}">
+  plantList.innerHTML = '';
+  plants.forEach((plant) => {
+    const plantCard = document.createElement('div');
+    plantCard.classList.add('plant-card');
+    plantCard.innerHTML = `
+      <img src="${plant.url}" alt="${plant.name}" />
+      <div class="plant-details">
+        <h2>${plant.name}</h2>
+        <p class="toxicity">${plant.toxicity ? 'Tóxica para pets' : 'Não tóxica para pets'}</p>
+        <div class="plant-info">
+          <p><strong>Sol:</strong> ${plant.sun}</p>
+          <p><strong>Água:</strong> ${plant.water}</p>
         </div>
-        <h2 class="plant-name">${plant.name}</h2>
-        <div class="plant-details">
-          <p class="plant-price">$${plant.price}</p>
-          <p class="plant-toxicity">${plant.toxicity ? "Toxic" : "Non-toxic"}</p>
-        </div>
-      </li>
-      `;
-    })
-    .join("");
-  plantList.innerHTML = htmlString;
+      </div>
+    `;
+    plantList.appendChild(plantCard);
+  });
 }
 
+// função para filtrar as plantas
 function filterPlants() {
-  const sunValue = sunFilter.value;
-  const waterValue = waterFilter.value;
-  const petsValue = petsFilter.value;
-
-  let filteredPlants = plants.filter((plant) => {
-    if (sunValue && plant.sun !== sunValue) {
+  const filteredPlants = plants.filter((plant) => {
+    if (filterSun.value !== 'all' && plant.sun !== filterSun.value) {
       return false;
     }
-    if (waterValue && plant.water !== waterValue) {
+    if (filterWater.value !== 'all' && plant.water !== filterWater.value) {
       return false;
     }
-    if (petsValue && plant.toxicity.toString() !== petsValue) {
+    if (filterPets.value !== 'all' && plant.toxicity !== (filterPets.value === 'true')) {
       return false;
     }
     return true;
   });
-
   displayPlants(filteredPlants);
 }
 
-sunFilter.addEventListener("change", () => {
+// adicionando um listener de evento ao formulário
+filterForm.addEventListener('submit', (event) => {
+  event.preventDefault();
   filterPlants();
 });
 
-waterFilter.addEventListener("change", () => {
-  filterPlants();
-});
-
-petsFilter.addEventListener("change", () => {
-  filterPlants();
-  sunFilter.value = "";
-  waterFilter.value = "";
-});
+// adicionando um listener de evento aos filtros
+filterSun.addEventListener('change', filterPlants);
+filterWater.addEventListener('change', filterPlants);
+filterPets.addEventListener('change', filterPlants);
