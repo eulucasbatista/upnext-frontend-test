@@ -7,14 +7,12 @@
     <meta name="author" content="Lucas Cavalcante">
 	  <meta name="description" content="UpNext FrontEnd Test - Greenthumb">
 	  <meta name="keywords" content="sites, web, desenvolvimento, plantas">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="./index.css"/>
   </head>
 
   <body>
+    
     <div class="bg-panel">
       <div class="bg-left-leaves">
         <div class="bg-logo-area">
@@ -32,6 +30,39 @@
       <div class="bg-right-leaves">
         
       </div>
+    </div>
+    
+    <form>
+      <label for="sunlight">Luminosidade:</label>
+      <select id="sunlight">
+        <option value="">Todos</option>
+        <option value="no">Sem luz direta</option>
+        <option value="low">Pouca luz</option>
+        <option value="high">Muita luz</option>
+      </select>
+
+      <label for="water">Rega:</label>
+      <select id="water">
+        <option value="">Todas</option>
+        <option value="regularly">Regularmente</option>
+        <option value="daily">Diariamente</option>
+        <option value="rarely">Raramente</option>
+      </select>
+
+      <label for="pets">Animais de estimação:</label>
+      <select id="pets">
+        <option value="">Todas</option>
+        <option value="true">Seguras para animais</option>
+        <option value="false">Tóxicas para animais</option>
+      </select>
+      
+      <button type="submit">Filtrar</button>
+    </form>
+
+    <ul id="plant-list"></ul>
+
+    <script src="./app.js"></script>
+
     </div>
    
   </body>
