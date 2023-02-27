@@ -36,40 +36,39 @@
     </div>
     
     <form id="filterForm">
-      <div class="filter-group">
+      <div class="filter">
         <label for="filterSun">Sol:</label>
         <select id="filterSun">
-          <option value="all" selected>Todos</option>
-          <option value="no">Nenhum</option>
-          <option value="low">Baixo</option>
+          <option value="all">Todos</option>
           <option value="high">Alto</option>
+          <option value="low">Baixo</option>
+          <option value="no">Nenhum</option>
         </select>
       </div>
-      <div class="filter-group">
+      <div class="filter">
         <label for="filterWater">Água:</label>
         <select id="filterWater">
-          <option value="all" selected>Todos</option>
-          <option value="rarely">Raramente</option>
-          <option value="regularly">Regularmente</option>
-          <option value="daily">Diariamente</option>
+          <option value="all">Todos</option>
+          <option value="often">Frequente</option>
+          <option value="rarely">Raro</option>
+          <option value="daily">Diário</option>
         </select>
       </div>
-      <div class="filter-group">
-        <label for="filterPets">Pet:</label>
+      <div class="filter">
+        <label for="filterPets">Tóxica:</label>
         <select id="filterPets">
-          <option value="all" selected>Todos</option>
-          <option value="true">Não Tóxica</option>
-          <option value="false">Tóxica</option>
+          <option value="all">Todos</option>
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
         </select>
       </div>
-      <button type="submit" id="filterBtn">Filtrar</button>
+      <button type="submit" id="filterButton">Filtrar</button>
     </form>
-  </header>
-  <main>
     <div id="plantList"></div>
+    <p id="noResultsMessage" style="display:none">Nenhuma planta encontrada</p>
   </main>
   <script src="app.js"></script>
-    </div>
+
    
   </body>
 </html>

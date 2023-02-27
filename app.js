@@ -6,6 +6,7 @@ const filterWater = document.querySelector('#filterWater');
 const filterPets = document.querySelector('#filterPets');
 const plantList = document.querySelector('#plantList');
 const filterForm = document.querySelector('#filterForm');
+const filterButton = document.querySelector('#filterButton');
 
 // carregando as plantas do arquivo JSON
 let plants = [];
@@ -13,7 +14,6 @@ fetch('./plants.json')
   .then(response => response.json())
   .then(data => {
     plants = data;
-    displayPlants(plants);
   });
 
 // função para exibir as plantas na tela
@@ -60,7 +60,7 @@ filterForm.addEventListener('submit', (event) => {
   filterPlants();
 });
 
-// adicionando um listener de evento aos filtros
-filterSun.addEventListener('change', filterPlants);
-filterWater.addEventListener('change', filterPlants);
-filterPets.addEventListener('change', filterPlants);
+// adicionando um listener de evento ao botão de filtro
+filterButton.addEventListener('click', () => {
+  filterPlants();
+});
